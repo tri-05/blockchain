@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hệ thống quản lý văn bằng</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          primary: "#6366f1",
+          secondary: "#8b5cf6"
+        },
+        boxShadow: {
+          soft: "0 15px 40px rgba(0,0,0,0.08)"
+        }
+      }
+    }
+  }
+  </script>
+</head>
+
+<body class="bg-gradient-to-br from-indigo-100 via-purple-100 to-indigo-200 min-h-screen">
+
+  <!-- HEADER -->
+  <header class="max-w-5xl mx-auto p-6 flex items-center justify-between">
+    <div>
+      <h1 class="text-2xl font-extrabold text-indigo-700">
+        🎓 Degree Blockchain System
+      </h1>
+      <p class="text-sm text-gray-600">
+        Lưu trữ & xác thực văn bằng trên Blockchain
+      </p>
+    </div>
+
+    <div id="walletStatus"
+      class="text-sm px-4 py-2 bg-white/80 backdrop-blur rounded-xl shadow-soft text-gray-600">
+      🔌 Chưa kết nối ví
+    </div>
+  </header>
+
+  <!-- MAIN -->
+  <main class="max-w-5xl mx-auto p-6">
+
+    <!-- NAV QUICK -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <a href="./pages/student.html" class="bg-white/80 backdrop-blur p-3 rounded-xl shadow-soft text-center hover:scale-105 transition">
+        👨‍🎓 Sinh viên
+      </a>
+      <a href="./pages/degree.html" class="bg-white/80 backdrop-blur p-3 rounded-xl shadow-soft text-center hover:scale-105 transition">
+        📜 Văn bằng
+      </a>
+      <a href="./pages/transcript.html" class="bg-white/80 backdrop-blur p-3 rounded-xl shadow-soft text-center hover:scale-105 transition">
+        📊 Bảng điểm
+      </a>
+      <a href="./pages/verify.html" class="bg-white/80 backdrop-blur p-3 rounded-xl shadow-soft text-center hover:scale-105 transition">
+        🔍 Xác thực
+      </a>
+    </div>
+
+    <!-- CARD GRID -->
+    <div class="grid gap-6 grid-cols-1 sm:grid-cols-2">
+
+      <!-- STUDENT -->
+      <a data-animate href="./pages/student.html"
+        class="block bg-white/80 backdrop-blur p-6 rounded-3xl shadow-soft hover:shadow-xl transform hover:-translate-y-2 hover:scale-[1.03] transition-all duration-300 opacity-0 translate-y-4">
+
+        <div class="flex items-start gap-4">
+          <div class="text-4xl">👨‍🎓</div>
+          <div>
+            <h2 class="font-bold text-lg text-indigo-700">Quản lý sinh viên</h2>
+            <p class="text-sm text-gray-600">Tạo và xem thông tin sinh viên</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- DEGREE -->
+      <a data-animate href="./pages/degree.html"
+        class="block bg-white/80 backdrop-blur p-6 rounded-3xl shadow-soft hover:shadow-xl transform hover:-translate-y-2 hover:scale-[1.03] transition-all duration-300 opacity-0 translate-y-4">
+
+        <div class="flex items-start gap-4">
+          <div class="text-4xl">📜</div>
+          <div>
+            <h2 class="font-bold text-lg text-green-700">Quản lý văn bằng</h2>
+            <p class="text-sm text-gray-600">Cấp, thu hồi và xem văn bằng</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- TRANSCRIPT -->
+      <a data-animate href="./pages/transcript.html"
+        class="block bg-white/80 backdrop-blur p-6 rounded-3xl shadow-soft hover:shadow-xl transform hover:-translate-y-2 hover:scale-[1.03] transition-all duration-300 opacity-0 translate-y-4">
+
+        <div class="flex items-start gap-4">
+          <div class="text-4xl">📊</div>
+          <div>
+            <h2 class="font-bold text-lg text-purple-700">Bảng điểm</h2>
+            <p class="text-sm text-gray-600">Thêm và tra cứu bảng điểm</p>
+          </div>
+        </div>
+      </a>
+
+      <!-- VERIFY -->
+      <a data-animate href="./pages/verify.html"
+        class="block bg-white/80 backdrop-blur p-6 rounded-3xl shadow-soft hover:shadow-xl transform hover:-translate-y-2 hover:scale-[1.03] transition-all duration-300 opacity-0 translate-y-4">
+
+        <div class="flex items-start gap-4">
+          <div class="text-4xl">🔍</div>
+          <div>
+            <h2 class="font-bold text-lg text-sky-700">Xác thực hồ sơ</h2>
+            <p class="text-sm text-gray-600">Kiểm tra tính hợp lệ trên Blockchain</p>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+  <script src="./js/ui.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Xác thực hồ sơ</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script src="../js/web3.js"></script>
+  <script src="../js/contract.js"></script>
+  <script src="../js/app.js"></script>
+
+  <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        boxShadow: {
+          soft: "0 20px 40px rgba(0,0,0,0.08)"
+        }
+      }
+    }
+  }
+  </script>
+</head>
+
+<body onload="initWeb3()" class="bg-gradient-to-br from-sky-100 via-indigo-100 to-sky-200 min-h-screen py-10">
+
+  <!-- HEADER -->
+  <header class="max-w-3xl mx-auto mb-6 px-4 flex items-center justify-between">
+    <div>
+      <h1 class="text-xl font-extrabold text-indigo-700">🔍 Xác thực hồ sơ</h1>
+      <p class="text-sm text-gray-600">Kiểm tra tính hợp lệ trên Blockchain</p>
+    </div>
+
+    <div id="walletStatus"
+      class="text-sm px-4 py-2 bg-white/80 backdrop-blur rounded-xl shadow-soft text-gray-600">
+      🔌 Chưa kết nối ví
+    </div>
+  </header>
+
+  <!-- CARD -->
+  <main class="max-w-3xl mx-auto bg-white/80 backdrop-blur p-8 rounded-3xl shadow-soft">
+
+    <!-- INPUT -->
+    <section class="mb-6">
+      <label class="text-sm font-semibold text-gray-600">
+        Địa chỉ ví sinh viên
+      </label>
+
+      <input id="verifyWallet"
+        class="w-full border rounded-xl px-4 py-2 mt-1 focus:ring-2 focus:ring-indigo-400 outline-none"
+        placeholder="0x...">
+    </section>
+
+    <!-- ACTION -->
+    <div class="flex gap-3 mb-6">
+      <button onclick="verifyStudent()"
+        class="flex-1 bg-indigo-500 text-white py-2 rounded-xl hover:bg-indigo-600 transition font-semibold shadow">
+        Xác thực Blockchain
+      </button>
+
+      <a href="../index.html"
+        class="py-2 px-4 bg-gray-100 rounded-xl hover:bg-gray-200 transition">
+        ⬅ Trang chủ
+      </a>
+    </div>
+
+    <!-- RESULT CARD -->
+    <div id="verifyCard"
+      class="hidden border rounded-2xl p-5 shadow bg-gradient-to-br from-indigo-50 to-sky-50">
+
+      <div class="flex items-center justify-between mb-3">
+        <h3 class="font-bold text-gray-700">Kết quả xác thực</h3>
+
+        <span id="verifyBadge"
+          class="px-3 py-1 text-xs font-bold rounded-full bg-gray-200 text-gray-700">
+          Chưa xác định
+        </span>
+      </div>
+
+      <pre id="verifyResult"
+        class="text-sm text-gray-800 whitespace-pre-wrap"></pre>
+    </div>
+
+  </main>
+
+  <script src="../js/ui.js"></script>
+
+  <script>
+  // hiển thị card + badge khi có kết quả
+  const observer = new MutationObserver(() => {
+    const text = document.getElementById("verifyResult").innerText.trim()
+    if (text !== "") {
+      document.getElementById("verifyCard").classList.remove("hidden")
+
+      const badge = document.getElementById("verifyBadge")
+
+      if (text.toLowerCase().includes("hợp lệ") || text.toLowerCase().includes("valid")) {
+        badge.innerText = "✔ HỢP LỆ"
+        badge.className = "px-3 py-1 text-xs font-bold rounded-full bg-green-100 text-green-700"
+      } else {
+        badge.innerText = "✖ KHÔNG HỢP LỆ"
+        badge.className = "px-3 py-1 text-xs font-bold rounded-full bg-red-100 text-red-700"
+      }
+    }
+  })
+
+  observer.observe(document.getElementById("verifyResult"), { childList: true })
+  </script>
+
+</body>
+</html>
